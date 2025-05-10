@@ -93,7 +93,7 @@
         id
       };
 
-      // 3) Enviamos al API
+       // 3) Enviamos al API
       fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -101,3 +101,12 @@
       })
       .catch(() => {})
       .finally(() => {
+        // 4) Redirección inmediata a WhatsApp
+        const num = whatsappNumbers[Math.floor(Math.random() * whatsappNumbers.length)];
+        const texto = `${mensajeBase} Mi código promocional es: ${id}`;
+        window.location.href = `https://wa.me/${num}?text=${encodeURIComponent(texto)}`;
+      });
+    });
+  </script>
+</body>
+</html>
